@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lettercraft by yukjidam</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Caveat:wght@400;600&family=Lora:ital,wght@0,400;1,400&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Crimson+Pro:ital,wght@0,400;1,400&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Josefin+Slab:wght@300;400&family=Dancing+Script:wght@400;600&family=Sacramento&family=Raleway:ital,wght@0,300;0,400;1,300&family=Spectral:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="logo">Letter<span>craft</span><span class="by">by yukjidam</span></div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <button class="about-btn" onclick="document.getElementById('aboutModal').classList.add('open')">✦ About</button>
+</header>
+
+<!-- ABOUT MODAL -->
+<div class="about-modal-backdrop" id="aboutModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="about-modal">
+    <button class="about-close" onclick="document.getElementById('aboutModal').classList.remove('open')">✕</button>
+    <div class="about-icon">✉️</div>
+    <h2 class="about-title">About Lettercraft</h2>
+    <p class="about-tagline">A little tool born from friendship across borders.</p>
+    <hr class="about-sep">
+    <div class="about-section">
+      <h3 class="about-h3">Where it came from</h3>
+      <p class="about-p">Lettercraft started from a simple habit in our small Discord server, <strong>Runeterra</strong> — a close-knit circle of friends scattered across different countries. Whenever a birthday, anniversary, or any occasion came up, we'd scramble to find some online card maker to send something thoughtful across the miles.</p>
+      <p class="about-p">Eventually the question became: <em>why not just make our own?</em> Something more personal, more flexible, and a little more us. That's Lettercraft — a handcrafted letter maker built with that same spirit of sending something warm to someone far away.</p>
+    </div>
+    <div class="about-section">
+      <h3 class="about-h3">The Runeterra crew 🌏</h3>
+      <p class="about-p">Runeterra isn't a game server or a fan club — it's just what we call our little corner of the internet. Friends from different timezones and countries who somehow ended up in the same Discord, celebrating each other's highs and showing up through the lows. This tool exists because of them.</p>
+    </div>
+    <hr class="about-sep">
+    <div class="about-made">
+      <span class="about-made-label">Made by</span>
+      <a class="about-link" href="https://github.com/yukjidam" target="_blank" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        yukjidam
+      </a>
+    </div>
+  </div>
+</div>
+
+<nav class="steps-nav" id="stepsNav">
+  <button class="step-tab active" onclick="goToStep(0)">① Type</button>
+  <button class="step-tab" onclick="goToStep(1)">② Theme</button>
+  <button class="step-tab" onclick="goToStep(2)">③ Content</button>
+  <button class="step-tab" onclick="goToStep(3)">④ Decor</button>
+  <button class="step-tab" onclick="goToStep(4)">⑤ Effects</button>
+  <button class="step-tab" onclick="goToStep(5)">⑥ Finish</button>
+</nav>
+
+<div class="app-layout" id="appLayout">
+
+  <div class="editor-panel" id="editorPanel">
+
+    <!-- STEP 0: TYPE -->
+    <div class="section active" id="s0">
+      <h1 class="panel-title">What's the occasion?</h1>
+      <p class="panel-subtitle">Pick the type of letter to set the right tone.</p>
+      <div class="type-grid">
+        <div class="type-card selected" onclick="selectType(this,'general','General')" data-type="general"><span class="ico">✉️</span><div class="name">General</div><div class="desc">Any occasion</div></div>
+        <div class="type-card" onclick="selectType(this,'birthday','Birthday')" data-type="birthday"><span class="ico">🎂</span><div class="name">Birthday</div><div class="desc">Celebrate them</div></div>
+        <div class="type-card" onclick="selectType(this,'love','Love')" data-type="love"><span class="ico">💌</span><div class="name">Love</div><div class="desc">Express feelings</div></div>
+        <div class="type-card" onclick="selectType(this,'thank-you','Thank You')" data-type="thank-you"><span class="ico">🙏</span><div class="name">Thank You</div><div class="desc">Show gratitude</div></div>
+        <div class="type-card" onclick="selectType(this,'friendship','Friendship')" data-type="friendship"><span class="ico">🤝</span><div class="name">Friendship</div><div class="desc">Celebrate friends</div></div>
+        <div class="type-card" onclick="selectType(this,'apology','Apology')" data-type="apology"><span class="ico">💫</span><div class="name">Apology</div><div class="desc">Say sorry</div></div>
+        <div class="type-card" onclick="selectType(this,'congratulations','Congratulations')" data-type="congratulations"><span class="ico">🏆</span><div class="name">Congrats</div><div class="desc">Cheer an achievement</div></div>
+        <div class="type-card" onclick="selectType(this,'holiday','Holiday')" data-type="holiday"><span class="ico">🎄</span><div class="name">Holiday</div><div class="desc">Season's greetings</div></div>
+      </div>
+      <div class="nav-buttons"><button class="btn btn-primary" onclick="goToStep(1)">Next: Theme →</button></div>
+    </div>
+
+    <!-- STEP 1: THEME -->
+    <div class="section" id="s1">
+      <h1 class="panel-title">Choose a theme</h1>
+      <p class="panel-subtitle">Pick a palette and font that sets the mood.</p>
+      <div class="theme-grid" id="themeGrid"></div>
+      <hr class="section-sep">
+      <div class="field">
+        <label>Font Style</label>
+        <div class="font-grid" id="fontGrid"></div>
+      </div>
+      <div class="nav-buttons"><button class="btn btn-secondary" onclick="goToStep(0)">← Back</button><button class="btn btn-primary" onclick="goToStep(2)">Next: Content →</button></div>
+    </div>
+
+    <!-- STEP 2: CONTENT -->
+    <div class="section" id="s2">
+      <h1 class="panel-title">Write your letter</h1>
+      <p class="panel-subtitle">Fill in your message, who it's for, and how you sign it.</p>
+      <div class="row">
+        <div class="field"><label>To</label><input type="text" id="toField" placeholder="e.g. Tania" oninput="updatePreview()"></div>
+        <div class="field"><label>From</label><input type="text" id="fromField" placeholder="e.g. Ron" oninput="updatePreview()"></div>
+      </div>
+      <div class="field"><label>Opening greeting</label><input type="text" id="greetField" placeholder="e.g. Dearest Tania," oninput="updatePreview()"></div>
+      <div class="field">
+        <label>Quote or epigraph <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:0.72rem;color:var(--ink3)">(optional)</span></label>
+        <input type="text" id="quoteField" placeholder="e.g. "In all the world, there is no heart for me like yours."" oninput="S.quote=this.value;updatePreview()">
+        <input type="text" id="quoteAuthorField" placeholder="— Author (optional)" oninput="S.quoteAuthor=this.value;updatePreview()" style="margin-top:0.5rem">
+      </div>
+      <div class="field">
+        <label>Your message <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:0.72rem;color:var(--ink3)">(max 750 characters)</span></label>
+        <textarea id="msgField" placeholder="Write your heartfelt message here..." oninput="onMsgInput()" maxlength="750"></textarea>
+        <div class="char-count" id="charCount">0 / 750</div>
+      </div>
+      <div class="field"><label>Closing line</label><input type="text" id="closingField" placeholder="e.g. With all my love," oninput="updatePreview()"></div>
+      <div class="nav-buttons"><button class="btn btn-secondary" onclick="goToStep(1)">← Back</button><button class="btn btn-primary" onclick="goToStep(3)">Next: Decor →</button></div>
+    </div>
+
+    <!-- STEP 3: DECOR -->
+    <div class="section" id="s3">
+      <h1 class="panel-title">Decorations</h1>
+      <p class="panel-subtitle">Add emojis, dividers, and visual details.</p>
+      <div class="field">
+        <label>Emojis (tap to add, max 8)</label>
+        <div class="emoji-picker" id="emojiPicker"></div>
+        <div class="selected-emojis" id="selectedEmojis"><span style="font-size:0.75rem;color:var(--ink3)">None selected</span></div>
+      </div>
+      <div class="field">
+        <label>Section divider</label>
+        <div class="divider-grid" id="dividerGrid"></div>
+      </div>
+      <hr class="section-sep">
+      <div class="field">
+        <label>Show date</label>
+        <select id="dateToggle" onchange="onDateToggle()">
+          <option value="yes">Today's date</option>
+          <option value="custom">Custom date</option>
+          <option value="no">No date</option>
+        </select>
+      </div>
+      <div class="field" id="customDateWrap" style="display:none"><label>Custom date</label><input type="text" id="customDate" placeholder="e.g. December 25, 2025" oninput="updatePreview()"></div>
+      <div class="field">
+        <label>P.S. message (optional)</label>
+        <input type="text" id="psField" placeholder="e.g. P.S. I'll always be here for you." oninput="updatePreview()">
+      </div>
+      <div class="field">
+        <label>Header bar style</label>
+        <select id="headerBar" onchange="updatePreview()">
+          <option value="rainbow">Rainbow gradient (animated)</option>
+          <option value="solid">Solid accent color</option>
+          <option value="none">No header bar</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Background texture</label>
+        <div class="hint" style="margin-bottom:0.5rem">Adds a subtle pattern to the letter paper</div>
+        <div class="divider-grid" id="textureGrid"></div>
+      </div>
+      <div class="nav-buttons"><button class="btn btn-secondary" onclick="goToStep(2)">← Back</button><button class="btn btn-primary" onclick="goToStep(4)">Next: Effects →</button></div>
+    </div>
+
+    <!-- STEP 4: EFFECTS -->
+    <div class="section" id="s4">
+      <h1 class="panel-title">Magic effects ✨</h1>
+      <p class="panel-subtitle">These are the interactive effects built into the final letter.</p>
+      <div class="field">
+        <label>Custom cursor emoji</label>
+        <div class="cursor-grid" id="cursorGrid"></div>
+        <div class="hint">The cursor turns into this emoji when hovering over the letter.</div>
+      </div>
+      <hr class="section-sep">
+      <div class="field">
+        <label>Background sparkle stars</label>
+        <select id="starCount" onchange="updatePreview()">
+          <option value="0">None</option>
+          <option value="20">Subtle (20)</option>
+          <option value="40" selected>Moderate (40)</option>
+          <option value="70">Dense (70)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Envelope reveal</label>
+        <select id="envelopeToggle" onchange="updatePreview()">
+          <option value="yes">Yes — show envelope first, then reveal letter</option>
+          <option value="no">No — show letter directly</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Envelope open button text</label>
+        <input type="text" id="openBtnText" value="Open your letter" oninput="updatePreview()">
+      </div>
+      <hr class="section-sep">
+      <div class="field">
+        <label>Interactive action buttons (shown after letter opens)</label>
+        <div class="effect-grid" id="effectGrid"></div>
+      </div>
+      <hr class="section-sep">
+      <div class="field">
+        <label>Cursor trail style</label>
+        <select id="trailStyle" onchange="updatePreview()">
+          <option value="dots">Colored dots</option>
+          <option value="sparkle">Sparkle symbols</option>
+          <option value="both" selected>Both</option>
+          <option value="none">No trail</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Watermark / signature line (optional)</label>
+        <input type="text" id="watermarkField" placeholder="e.g. made with love by Ron ♡" oninput="updatePreview()">
+      </div>
+      <div class="nav-buttons"><button class="btn btn-secondary" onclick="goToStep(3)">← Back</button><button class="btn btn-primary" onclick="goToStep(5)">Next: Finish →</button></div>
+    </div>
+
+    <!-- STEP 5: FINISH -->
+    <div class="section" id="s5">
+      <h1 class="panel-title">Almost there!</h1>
+      <p class="panel-subtitle">Last details before generating your letter.</p>
+      <div class="field"><label>File name</label><input type="text" id="fileNameField" placeholder="e.g. letter-for-tania" oninput="updatePreview()"></div>
+      <div class="field"><label>Browser tab title</label><input type="text" id="pageTitleField" placeholder="e.g. A Letter for Tania" oninput="updatePreview()"></div>
+      <div class="field">
+        <label>Max letter width</label>
+        <input type="range" min="400" max="860" value="520" id="widthSlider" oninput="document.getElementById('widthVal').textContent=this.value+'px';S.maxWidth=parseInt(this.value);updatePreview()">
+        <div class="hint">Max width: <span id="widthVal">520px</span></div>
+      </div>
+      <div class="field">
+        <label>Show "Made with Lettercraft" watermark</label>
+        <select id="brandToggle" onchange="updatePreview()">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+      <div class="nav-buttons"><button class="btn btn-secondary" onclick="goToStep(4)">← Back</button><button class="btn btn-primary" onclick="startGenerate()">✨ Generate Letter</button></div>
+    </div>
+
+  </div><!-- /editor-panel -->
+
+  <!-- RESIZE HANDLE -->
+  <div class="resize-handle" id="resizeHandle"></div>
+
+  <!-- PREVIEW PANEL -->
+  <div class="preview-panel" id="previewPanel">
+    <div class="preview-mobile-header">
+      <span class="preview-label">Live Preview</span>
+      <button class="preview-mobile-close" onclick="closeMobilePreview()">✕</button>
+    </div>
+    <div class="preview-label" style="padding:0 1.25rem;padding-top:1.25rem">Live Preview</div>
+    <div class="preview-frame" id="previewFrame">
+      <iframe id="previewIframe" title="Letter preview"></iframe>
+    </div>
+  </div>
+
+</div><!-- /app-layout -->
+
+<!-- MOBILE TAB BAR -->
+<div class="mobile-tab-bar" id="mobileTabBar">
+  <button id="tabEdit" class="active" onclick="switchMobileTab('edit')">Edit</button>
+  <button id="tabPreview" onclick="switchMobileTab('preview')">Preview</button>
+</div>
+
+<!-- LOADING -->
+<div class="loading-screen" id="loadingScreen">
+  <div class="quill">✒️</div>
+  <div class="loading-title">Crafting your <em>letter...</em></div>
+  <div class="loading-bar-wrap"><div class="loading-bar-fill" id="loadingBarFill"></div></div>
+  <div class="loading-msg" id="loadingMsg">Preparing the parchment...</div>
+</div>
+
+<!-- DONE -->
+<div class="done-screen" id="doneScreen">
+  <div class="done-icon">🎉</div>
+  <div class="done-title">Your letter is ready!</div>
+  <div class="done-sub">Download the HTML file and open it in any browser — works offline and looks great on mobile!</div>
+  <button class="btn-download" id="downloadBtn">⬇ Download Letter</button>
+  <button class="btn-restart" onclick="restartApp()">✦ Make Another Letter</button>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
