@@ -116,20 +116,20 @@ Designed to work beautifully on both desktop and mobile devices.
 
 ---
 
+## 📥 Download Your Letter
+
+After customizing your letter, Lettercraft lets you download a fully interactive digital HTML version that can be opened, shared, and experienced in any modern browser.
+
+![Download Showcase](https://github.com/yukjidam/Lettercraft/blob/main/download.png?raw=true)
+
+---
+
 # 🛠️ Built With
 
 - HTML5
 - CSS3
 - Vanilla JavaScript
 - Google Fonts
-
----
-
-## 📥 Download Your Letter
-
-After customizing your letter, Lettercraft lets you download a fully interactive digital HTML version that can be opened, shared, and experienced in any modern browser.
-
-![Download Showcase](https://github.com/yukjidam/Lettercraft/blob/main/download.png?raw=true)
 
 ---
 
