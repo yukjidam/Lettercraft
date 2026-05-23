@@ -123,3 +123,27 @@ Designed to work beautifully on both desktop and mobile devices.
 - Vanilla JavaScript
 - Google Fonts
 
+---
+
+# 📥 How to Use Lettercraft
+
+1. Download the generated HTML file named:
+
+Lettercraft by Yukjidam.html
+
+2. Open the file using any modern web browser.
+
+Supported browsers include:
+
+- Google Chrome
+- Microsoft Edge
+- Firefox
+- Opera
+- Safari
+
+No installation, server setup, or internet connection is required after downloading.
+
+You can also send the HTML file to someone else so they can open and experience the letter exactly as intended.
+
+---
+
